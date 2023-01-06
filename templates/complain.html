@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+Member Complain
+
+{% endblock%}
+
+
+{% block body %}
+
+<!-- Bannner Start -->
+
+
+<div class="jumbotron-fluid"
+    style="height:40vh;background:linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('/static/images/back1.jpg'); background-position:center; background-size:cover;">
+    <div class="container pt-5">
+        <h1 class="display-5 mt-4 text-light" style="font-size: 4rem;">RockStar Member Query / Complain</h1>
+    </div>
+
+</div>
+
+
+
+<!-- Bannner End -->
+
+
+{% comment %} success msg {% endcomment %}
+
+{% if success %}
+
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Hey, {{member_name}}!</strong> We will definitely work on your query / complain. 
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+{% endif %}
+
+
+
+
+<!-- Form Start -->
+
+<div class="container py-5">
+
+    <form action="/member/complain" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="exampleInputEmail1">Member Name</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="name">
+            
+          </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Member Email</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+          
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Query/Complain</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Write Your Complain" name="complain"></textarea>
+          </div>
+        
+        
+        <button type="submit" class="btn btn-primary">Submit Your Complain</button>
+        <a href="/member" class="btn btn-primary">Member Panel</a>
+      </form>
+
+
+
+</div>
+
+
+<!-- Rule End -->
+{% endblock%}
